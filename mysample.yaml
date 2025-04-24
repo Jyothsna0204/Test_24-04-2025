@@ -1,0 +1,15 @@
+---
+- hosts: awsec2-user1
+  become: yes
+  tasks:
+    - name: install webserver on ec2-linux
+      yum:
+        name: httpd
+        state: present
+
+    - name: check status of webserver on ec2-linux
+      service:
+        name: httpd
+        state: stopped
+      when: ansible_os_family == "RedHat"
+
