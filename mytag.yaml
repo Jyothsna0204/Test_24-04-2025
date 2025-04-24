@@ -1,0 +1,21 @@
+---
+- hosts: mywebserver
+  become: yes
+  tasks:
+    - name: install git
+      yum:
+        name: git
+        state: present
+      tags: mygit
+
+    - name: install tree
+      yum:
+        name: tree
+        state: present
+      tags: mytree
+
+    - name: install tree
+      yum:
+        name: wget
+        state: present
+      tags: mywget

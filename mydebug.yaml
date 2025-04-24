@@ -1,0 +1,23 @@
+---
+- hosts: mywebserver
+  become: yes
+  tasks:
+    - name: excute Linux command
+      command: hostname -f
+      register: myfirsttaskresult
+
+    - name: I want to see first task result
+      debug:
+        msg: "{{myfirsttaskresult}}"
+
+    - name: install git
+      yum:
+        name: git
+        state: present
+      when: myfirsttaskresult.stderr == ""
+
+    - name: install tree
+      yum:
+        name: tree
+        state: present
+      when: myfirsttaskresult.stderr != ""
