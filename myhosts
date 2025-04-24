@@ -1,6 +1,6 @@
 
-[awsec2-user1]
+[mywebserver]
 172.31.20.117
 
-[awsec2-user2]
+[awsec2-user1]
 172.31.21.71
